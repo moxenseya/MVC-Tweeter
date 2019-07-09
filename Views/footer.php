@@ -19,13 +19,14 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Login/Sign Up</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Login</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
         <form>
+          <input type="hidden" name="loginActive" value="1" id= "loginActive"></input>
           <div class="form-group">
             <label for="exampleInputEmail1">Email address</label>
             <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
@@ -36,13 +37,29 @@
             <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
           </div>
           <div class="modal-footer">
-            <button type="submit" class="btn btn-primary" data-dismiss="modal">Submit</button>
+            <a href="#" id = "toggleLogin">Sign Up</a>
+            <button type="submit" class="btn btn-primary" data-dismiss="modal" id="LoginButton">Submit</button>
           </div>
         </form>
       </div>
     </div>
   </div>
 </div>
-
+<script type="text/javascript">
+  $("#toggleLogin").click(function() {
+    if($("#loginActive").val() == "1"){
+      $("#loginActive").val("0");
+      $("#exampleModalLabel").html("Sign Up");
+$("#LoginButton").html("Sign Up");
+$("#toggleLogin").html("Login");
+    }
+else {
+  $("#loginActive").val("1");
+  $("#exampleModalLabel").html("Login");
+$("#LoginButton").html("Login");
+$("#toggleLogin").html("Sign Up");
+}
+  });
+</script>
 </body>
 </html>
