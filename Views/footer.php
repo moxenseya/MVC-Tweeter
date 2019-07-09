@@ -68,7 +68,7 @@ $("#LoginButton").click(function(){
 $.ajax({
   type: "POST",
   url: "actions.php?action=loginSignup",
-  data: "email=" + $("#exampleInputEmail1").val() + "password=" + $("#exampleInputPassword1").val() + "&loginActive=" + $("#loginActive").val(),
+  data: "email=" + $("#exampleInputEmail1").val() + "&password=" + $("#exampleInputPassword1").val() + "&loginActive=" + $("#loginActive").val(),
 success: function (result){
   alert(result);
 }
