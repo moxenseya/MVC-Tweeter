@@ -41,7 +41,7 @@
           </div>
           <div class="modal-footer">
             <a href="#" id = "toggleLogin">Sign Up</a>
-            <button type="submit" class="btn btn-primary" data-dismiss="modal" id="LoginButton">Submit</button>
+            <button type="submit" class="btn btn-primary" id="LoginButton">Submit</button>
           </div>
         </form>
       </div>
