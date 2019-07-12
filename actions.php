@@ -36,6 +36,15 @@ if($_GET['action']== "loginSignup"){
 
       if(mysqli_query($link,$query))
       {
+// Password Hashing here
+//$query = "UPDATE users SET password = '".md5(md5(mysqli_insert_id($link)) .$_POST['password'])."'WHERE id= ".mysqli_insert_id($link)."LIMIT 1";
+
+$query = "UPDATE users SET password = '".password_hash($_POST['password'], PASSWORD_DEFAULT, ['cost' => 12])."'WHERE email= '".mysqli_real_escape_string($link, $_POST['email'])."' LIMIT 1";
+
+
+
+mysqli_query($link,$query);
+
         echo "You have signed up successfully!";
       }
 
