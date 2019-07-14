@@ -28,6 +28,7 @@
         </button>
       </div>
       <div class="modal-body">
+        <div class="alert alert-danger" id= "loginAlert"></div>
         <form>
           <input type="hidden" name="loginActive" value="1" id= "loginActive"></input>
           <div class="form-group">
@@ -70,7 +71,13 @@ $.ajax({
   url: "actions.php?action=loginSignup",
   data: "email=" + $("#exampleInputEmail1").val() + "&password=" + $("#exampleInputPassword1").val() + "&loginActive=" + $("#loginActive").val(),
 success: function (result){
-  alert(result);
+  if(result== "1")
+  {
+    window.location.assign("http://ahussainsy-ed.stackstaging.com/MVC%20Twitter%20Clone/");
+  }
+  else {
+    $("#loginAlert").html(result).show();
+  }
 }
 })
 

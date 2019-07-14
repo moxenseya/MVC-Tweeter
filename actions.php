@@ -43,7 +43,7 @@ if($_GET['action']== "loginSignup"){
 
         mysqli_query($link,$query);
 
-        echo "You have signed up successfully!";
+        echo "1 ";
       }
 
       else {
@@ -62,15 +62,19 @@ if($_GET['action']== "loginSignup"){
 
     $result = mysqli_query($link,$query);
     $row = mysqli_fetch_assoc($result);
-
+if(mysqli_num_rows($result) > 0)
+{
     if(password_verify($_POST['password'],$row['password']))
     {
-      echo "You are logged in!";
+      echo "1";
     }
     else {
       $error= "Password is incorrect, please try again";
     }
-
+}
+else {
+  $error = "No user by that email ID exists";
+}
   }
 
   if(error!= "")
