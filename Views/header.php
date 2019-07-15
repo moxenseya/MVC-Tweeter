@@ -38,7 +38,16 @@ Public Profiles
           </li>
         </ul>
         <div class="form-inline my-2 my-lg-0">
-          <button class="btn btn-outline-success my-2 my-sm-0" type="submit" data-toggle="modal" data-target="#myModal">Login/Sign Up</button>
+
+          <?php if( isset($_SESSION['id'])){ ?>
+
+            <a class="btn btn-outline-success my-2 my-sm-0" href="?function=logout">Logout</a>
+
+          <?php  } else{?>
+
+          <button class="btn btn-outline-success my-2 my-sm-0" data-toggle="modal" data-target="#myModal">Login/Sign Up</button>
+
+        <?php } ?>
         </div>
       </div>
     </nav>

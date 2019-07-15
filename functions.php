@@ -1,5 +1,7 @@
 <?php
 
+session_start();
+
 $link = mysqli_connect("shareddb-n.hosting.stackcp.net", "MyDatabase-3130377a12", "pass1234", "MyDatabase-3130377a12");
 
 
@@ -11,4 +13,9 @@ exit();
 
 }
 
+
+if($_GET['function'] == "logout")
+{
+  session_unset();
+}
  ?>

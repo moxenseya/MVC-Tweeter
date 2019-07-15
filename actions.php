@@ -37,6 +37,8 @@ if($_GET['action']== "loginSignup"){
       if(mysqli_query($link,$query))
       {
 
+        $_SESSION['id'] = mysqli_insert_id($link);
+
         $query = "UPDATE users SET password = '".password_hash($_POST['password'], PASSWORD_DEFAULT, ['cost' => 12])."'WHERE email= '".mysqli_real_escape_string($link, $_POST['email'])."' LIMIT 1";
 
 
@@ -44,6 +46,7 @@ if($_GET['action']== "loginSignup"){
         mysqli_query($link,$query);
 
         echo "1 ";
+
       }
 
       else {
@@ -62,19 +65,22 @@ if($_GET['action']== "loginSignup"){
 
     $result = mysqli_query($link,$query);
     $row = mysqli_fetch_assoc($result);
-if(mysqli_num_rows($result) > 0)
-{
-    if(password_verify($_POST['password'],$row['password']))
+    if(mysqli_num_rows($result) > 0)
     {
-      echo "1";
+      if(password_verify($_POST['password'],$row['password']))
+      {
+
+        $_SESSION['id'] = $row['id'];
+        $_error =   $_SESSION['id'] + " Is the session ID";
+        echo "1";
+      }
+      else {
+        $error= "Password is incorrect, please try again";
+      }
     }
     else {
-      $error= "Password is incorrect, please try again";
+      $error = "No user by that email ID exists";
     }
-}
-else {
-  $error = "No user by that email ID exists";
-}
   }
 
   if(error!= "")
